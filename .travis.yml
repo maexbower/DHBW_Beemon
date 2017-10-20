@@ -5,7 +5,7 @@ dist: trusty
 before_install:
 
 - sudo apt-get -qq update
-- sudo apt-get install -yy --no-install-recommends texlive-full
+- sudo apt-get install -yy --no-install-recommends texlive texlive-lang-german texlive-doc-de texlive-latex-extra biber
 
 script:
 
