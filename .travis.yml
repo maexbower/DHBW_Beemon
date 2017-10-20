@@ -1,0 +1,27 @@
+sudo: required
+
+dist: trusty
+
+before_install:
+
+- sudo apt-get -qq update
+- sudo apt-get install -yy --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
+
+script:
+
+- mkdir _build
+
+- ./Ausarbeitung/makeindex.sh
+
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build Ausarbeitung/beemon.tex
+
+deploy:
+
+  provider: releases
+  api_key:
+   secure: "niaIFKMHwubgzVTpgayD/W2F/g9WdFeX8E+X6ZubQbqa94hWQ1hjWtNGuycr04TZ+j7jwjKdIcaGRAA/muemXIlDuxsjHW33Fr2BB/5lrx+6R9i/1ZGapvvD/jThQkedEe/6/sVsnBslKCasOs+UvvDmxBzdnaCh5Npf+R98q/FlUB//r2leMU4GGpZiJRmB2VHRbCzNawu2qPQY3bO2wn5vGG9Au9zMqO7tOhJj977P4YY/XCYTrID8/W6Smojdb0/1RCQIfU3yma74WuAuQZx37HdBzy6nKNFfyk7KtbSPOLN36xHgG2stGIST1qATO2IaErD5BhjUqM2XPiB3O9MsDIGy4vDjV9DVWZrP1WR3uN4NQ/IMB/LiixhUNStY9VI6i6EyDT9HLbHi6R2zFmY13uFI3pNwZ3juv5ELLKIGoGQGOIaF9zIstTiP0NEVrPArA6S53OPuysFMmGJP+KRMN3F/JiFwx666yiQ1ZusdyyMvbeQ5oc/kA01q85eJI9NG95ziCigbPssClcx30E+ZoF8MbriQj+EVfeOt41+P4joPayqFHvDIeEcX2erBuoNGM/vgT18ScNPoTW5agFInCjeyyEGSteaaAG31QIAd411+AWD87Lvy/wAQO08g0IvScpwGVV2WJoL07fQ6Mq4N33i0/DmC0+mWh9ZOqZc="
+  file:
+  - _build/beemon.pdf
+  skip_cleanup: true
+  on:
+    tags: true
