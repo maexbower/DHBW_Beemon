@@ -10,7 +10,7 @@ before_install:
 script:
 
 - mkdir _build
-
+- chmod +x Ausarbeitung/makeindex.sh
 - Ausarbeitung/makeindex.sh
 
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build Ausarbeitung/beemon.tex
