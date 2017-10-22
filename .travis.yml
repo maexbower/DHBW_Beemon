@@ -13,8 +13,8 @@ script:
 - chmod +x Ausarbeitung/makeindex.sh
 - cd Ausarbeitung
 - sh makeindex.sh
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build beemon.tex
 - cd ..
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build Ausarbeitung/beemon.tex
 
 deploy:
 
